@@ -41,14 +41,11 @@ curl --location --request POST 'http://localhost:1337/weatheraio' \
 ```
 
 
-You can define your Database Name inside of your config file (**./admin/config.json**). 
+You can define your database name inside of your config file (**./admin/config.json**). 
 <br /><br />
-We use the **Authorization Header** for our Auth Token! Create a collection called **auth** and insert your token like this:
+We use the **Authorization Header** at the POST request for our Auth Token! Create in your database a collection called **auth** and insert your token like this:
 ```javascript
 {
-    "_id": {
-        "$oid": "5f6cc1bc6add90226480b6c6"
-    },
     "token": "hhJKJ669779889hHjjhhnnkTTrge44TTbbbf"
 }
 ```

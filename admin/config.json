@@ -6,6 +6,5 @@
   "MongoDB_DB_PORT":"27017",
   "MongoDB_DB_NAME":"microservices-example",
   "MongoDB_DB_USERNAME":"",
-  "MongoDB_DB_PASSWORD":"",
-  "MongoDB_BIN":"C:\\Program Files\\MongoDB\\Server\\4.2\\bin\\"
+  "MongoDB_DB_PASSWORD":""
 }

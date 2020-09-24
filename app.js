@@ -189,5 +189,5 @@ app.post('/weatheraio', apiLimiter, function(req, res){(async () => {
 
 
 app.listen(port, () => {
-  log('Server was started.. Listening on: ' + process.env.IP + ':' + port);
+  log('Server was started.. Listening on port: ' + port);
 });

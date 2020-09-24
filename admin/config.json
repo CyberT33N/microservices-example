@@ -1,0 +1,11 @@
+{
+  "request_limit": 10000,
+
+  "MongoDB_DB_URL":"mongodb://localhost:27017",
+  "MongoDB_DB_HOST":"localhost",
+  "MongoDB_DB_PORT":"27017",
+  "MongoDB_DB_NAME":"microservices-example",
+  "MongoDB_DB_USERNAME":"",
+  "MongoDB_DB_PASSWORD":"",
+  "MongoDB_BIN":"C:\\Program Files\\MongoDB\\Server\\4.2\\bin\\"
+}

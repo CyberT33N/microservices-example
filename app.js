@@ -1,27 +1,6 @@
 'use strict'
 
 
-
-/*
-███████████████████████████████████████████████████████████████████████████████
-██******************** PRESENTED BY t33n Software ***************************██
-██                                                                           ██
-██                  ████████╗██████╗ ██████╗ ███╗   ██╗                      ██
-██                  ╚══██╔══╝╚════██╗╚════██╗████╗  ██║                      ██
-██                     ██║    █████╔╝ █████╔╝██╔██╗ ██║                      ██
-██                     ██║    ╚═══██╗ ╚═══██╗██║╚██╗██║                      ██
-██                     ██║   ██████╔╝██████╔╝██║ ╚████║                      ██
-██                     ╚═╝   ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝                      ██
-██                                                                           ██
-███████████████████████████████████████████████████████████████████████████████
-
-*/
-
-
-
-
-
-
 /*
 ████████████████████████████████████████████████████████████████████████████████
 .__                              __           .__               .__
@@ -98,55 +77,7 @@ controllermongodb = require('./controller/controller-mongodb'),
 
 
 
-
-
-                           // ADVERTISE
-                           var ads = gradient('red', 'white').multiline([
-                                  '',
-                                  'Presented by',
-                                  '████████╗██████╗ ██████╗ ███╗   ██╗',
-                                  '╚══██╔══╝╚════██╗╚════██╗████╗  ██║',
-                                  '   ██║    █████╔╝ █████╔╝██╔██╗ ██║',
-                                  '   ██║    ╚═══██╗ ╚═══██╗██║╚██╗██║',
-                                  '   ██║   ██████╔╝██████╔╝██║ ╚████║',
-                                  '   ╚═╝   ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝ Software'
-                           ].join('\n'));
-                           console.log(ads);
-                           console.log( '\nCheck my Github Profile: ' + chalk.white.bgGreen.bold(' github.com/CyberT33N ')  + '\n\n');
-                           console.log( gradient('white', 'black')('\n\n=======================================\n\n') );
-
-
-                               /*
-                               -----------------------------------------------------------------------------
-
-                               ███████╗████████╗ █████╗ ██████╗ ████████╗    ███████╗ ██████╗██████╗ ██╗██████╗ ████████╗
-                               ██╔════╝╚══██╔══╝██╔══██╗██╔══██╗╚══██╔══╝    ██╔════╝██╔════╝██╔══██╗██║██╔══██╗╚══██╔══╝
-                               ███████╗   ██║   ███████║██████╔╝   ██║       ███████╗██║     ██████╔╝██║██████╔╝   ██║
-                               ╚════██║   ██║   ██╔══██║██╔══██╗   ██║       ╚════██║██║     ██╔══██╗██║██╔═══╝    ██║
-                               ███████║   ██║   ██║  ██║██║  ██║   ██║       ███████║╚██████╗██║  ██║██║██║        ██║
-                               ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝       ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝╚═╝        ╚═╝
-                               */
-
-                               log( 'Current working directory: ' + __dirname );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ log( 'Current working directory: ' + __dirname );
 
 
 
@@ -176,10 +107,10 @@ app.post('/weatheraio', apiLimiter, function(req, res){(async () => {
 
   if (!req.is('application/json')) {
       let e = 'As it seems the POST request doesnt contain a valid JSON.. We cancel the request now..';
-      log( e );
+      log(e);
       res.send(e);
       return;
-   } //   if (!req.is('application/json')) {
+   }
    log( 'POST request JSON: '  + JSON.stringify(req.body, null, 4)  );
 
 
@@ -195,10 +126,10 @@ app.post('/weatheraio', apiLimiter, function(req, res){(async () => {
                 // check if token is valid
                if( !await controllermongodb.auth(req.headers['authorization']) ){
                    let e = 'Error while try to verify auth token..Maybe wrong token?';
-                   log( e );
-                   res.send( e );
+                   log(e);
+                   res.send(e);
                    return;
-               } //   if( !success ){
+               }
                log( 'Auth token was verified successfully..' );
 
 
@@ -214,8 +145,8 @@ app.post('/weatheraio', apiLimiter, function(req, res){(async () => {
               if ( req.body.lat && req.body.lon && req.body.appid ) var weatherAIO = await controller.weatheraio(req.body);
               else{
                 let e = 'Some parameters are missing.. Make sure that your request includes lat, lon & appid';
-                log( e );
-                res.send( e );
+                log(e);
+                res.send(e);
                 return;
               }
 
@@ -227,25 +158,25 @@ app.post('/weatheraio', apiLimiter, function(req, res){(async () => {
 
               if( weatherAIO ) {
 
-                  log( 'Successfully get weatherAIO: ' + JSON.stringify(weatherAIO, null, 4) );
+                  log( 'Successfully get weather data: ' + JSON.stringify(weatherAIO, null, 4) );
                   res.send( weatherAIO );
 
-              } // if( weatherAIO ) {
+              }
               else{
 
                   let e = 'Something went wrong with the API call..';
-                  log( e );
-                  res.send( e );
+                  log(e);
+                  res.send(e);
 
-              } // else from if( weatherAIO ) {
-
-
+              }
 
 
 
 
 
-})().catch((e) => {  log('ASYNC - Error at weatheraio route: ' + e)  })}); // app.post('/weatheraio', apiLimiter, function(req, res){(async () => {
+
+
+})().catch((e) => {  log('ASYNC - Error at weatheraio route: ' + e)  })});
 
 
 

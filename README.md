@@ -1,5 +1,5 @@
 # Microservices Example
-Example project for Node.js microservices! Send JSON via POST request and recieve the results from third party API. In this case we use this endpoint:
+Example project for Node.js microservices! Send JSON via POST request and receive the results from a sample third party API. In this case we use this endpoint:
 - https://openweathermap.org/api/one-call-api
 
 <br />

@@ -108,7 +108,7 @@ app.post('/weatheraio', apiLimiter, function(req, res){(async () => {
   if (!req.is('application/json')) {
       let e = 'As it seems the POST request doesnt contain a valid JSON.. We cancel the request now..';
       log(e);
-      res.send(e);
+      res.status(400).json( { message: e } );
       return;
    }
    log( 'POST request JSON: '  + JSON.stringify(req.body, null, 4)  );
@@ -127,7 +127,7 @@ app.post('/weatheraio', apiLimiter, function(req, res){(async () => {
                if( !await controllermongodb.auth(req.headers['authorization']) ){
                    let e = 'Error while try to verify auth token..Maybe wrong token?';
                    log(e);
-                   res.send(e);
+                   res.status(401).json( { message: e } );
                    return;
                }
                log( 'Auth token was verified successfully..' );
@@ -146,7 +146,7 @@ app.post('/weatheraio', apiLimiter, function(req, res){(async () => {
               else{
                 let e = 'Some parameters are missing.. Make sure that your request includes lat, lon & appid';
                 log(e);
-                res.send(e);
+                res.status(400).json( { message: e } );
                 return;
               }
 
@@ -166,7 +166,7 @@ app.post('/weatheraio', apiLimiter, function(req, res){(async () => {
 
                   let e = 'Something went wrong with the API call..';
                   log(e);
-                  res.send(e);
+                   res.status(400).json( { message: e } );
 
               }
 
